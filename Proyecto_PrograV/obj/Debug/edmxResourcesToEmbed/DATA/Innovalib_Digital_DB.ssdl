@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Proyecto_PrograVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="autor">
+    <Key>
+      <PropertyRef Name="autor_id" />
+    </Key>
+    <Property Name="autor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="persona_id" Type="int" Nullable="false" />
+    <Property Name="fecha_defuncion" Type="date" />
+  </EntityType>
+  <EntityType Name="BitacoraErrores">
+    <Key>
+      <PropertyRef Name="idBitacora" />
+    </Key>
+    <Property Name="idBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescError" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="MomentoError" Type="datetime" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BitacoraTransacciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="100" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Accion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tabla" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="categoria_id" />
+    </Key>
+    <Property Name="categoria_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="documento_identidad">
+    <Key>
+      <PropertyRef Name="documento_identidad_id" />
+    </Key>
+    <Property Name="documento_identidad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="libro">
+    <Key>
+      <PropertyRef Name="libro_id" />
+    </Key>
+    <Property Name="libro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titulo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="fecha_publicacion" Type="date" Nullable="false" />
+    <Property Name="categoria_id" Type="int" Nullable="false" />
+    <Property Name="autor_id" Type="int" Nullable="false" />
+    <Property Name="unidades_disponibles" Type="int" Nullable="false" />
+    <Property Name="estado" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="persona_id" />
+    </Key>
+    <Property Name="persona_id" Type="int" Nullable="false" />
+    <Property Name="identificacion" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="apellido1" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="apellido2" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="prestamo">
+    <Key>
+      <PropertyRef Name="prestamo_id" />
+    </Key>
+    <Property Name="prestamo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_prestamo" Type="date" Nullable="false" />
+    <Property Name="fecha_devolucion" Type="date" Nullable="false" />
+    <Property Name="detalle" Type="nvarchar(max)" />
+    <Property Name="usuario_id" Type="int" Nullable="false" />
+    <Property Name="estado" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="prestamo_libro">
+    <Key>
+      <PropertyRef Name="prestamo_libro_id" />
+    </Key>
+    <Property Name="prestamo_libro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="libro_id" Type="int" Nullable="false" />
+    <Property Name="prestamo_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rol">
+    <Key>
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="rol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="usuario_id" />
+    </Key>
+    <Property Name="usuario_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rol_id" Type="int" Nullable="false" />
+    <Property Name="persona_id" Type="int" Nullable="false" />
+    <Property Name="documento_identidad_id" Type="int" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="contrasena" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="estado" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Association Name="autor_persona_fk">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="autor" Type="Self.autor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="persona_id" />
+      </Principal>
+      <Dependent Role="autor">
+        <PropertyRef Name="persona_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="libro_autor_fk">
+    <End Role="autor" Type="Self.autor" Multiplicity="1" />
+    <End Role="libro" Type="Self.libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autor">
+        <PropertyRef Name="autor_id" />
+      </Principal>
+      <Dependent Role="libro">
+        <PropertyRef Name="autor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="libro_categoria_fk">
+    <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+    <End Role="libro" Type="Self.libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="categoria_id" />
+      </Principal>
+      <Dependent Role="libro">
+        <PropertyRef Name="categoria_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="prestamo_libro_fk">
+    <End Role="libro" Type="Self.libro" Multiplicity="1" />
+    <End Role="prestamo_libro" Type="Self.prestamo_libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="libro">
+        <PropertyRef Name="libro_id" />
+      </Principal>
+      <Dependent Role="prestamo_libro">
+        <PropertyRef Name="libro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="prestamo_libro_prestamo_fk">
+    <End Role="prestamo" Type="Self.prestamo" Multiplicity="1" />
+    <End Role="prestamo_libro" Type="Self.prestamo_libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prestamo">
+        <PropertyRef Name="prestamo_id" />
+      </Principal>
+      <Dependent Role="prestamo_libro">
+        <PropertyRef Name="prestamo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="prestamo_usuario_fk">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="prestamo" Type="Self.prestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="usuario_id" />
+      </Principal>
+      <Dependent Role="prestamo">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_documento_identidad_fk">
+    <End Role="documento_identidad" Type="Self.documento_identidad" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="documento_identidad">
+        <PropertyRef Name="documento_identidad_id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="documento_identidad_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_persona_fk">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="persona_id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="persona_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_rol_fk">
+    <End Role="rol" Type="Self.rol" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rol">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="fn_obtener_id_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ObtenerTodosLosUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="RegistrarBitacoraErrores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DescripcionError" Type="nvarchar" Mode="In" />
+    <Parameter Name="MomentoError" Type="datetime" Mode="In" />
+    <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_autor_id" Type="int" Mode="In" />
+    <Parameter Name="p_persona_id" Type="int" Mode="In" />
+    <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+    <Parameter Name="p_fecha_defuncion" Type="date" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_actualizar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_categoria_id" Type="int" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_actualizar_documento_identidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_documento_identidad_id" Type="int" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_actualizar_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_libro_id" Type="int" Mode="In" />
+    <Parameter Name="p_titulo" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_fecha_publicacion" Type="date" Mode="In" />
+    <Parameter Name="p_categoria_id" Type="int" Mode="In" />
+    <Parameter Name="p_autor_id" Type="int" Mode="In" />
+    <Parameter Name="p_unidades_disponibles" Type="int" Mode="In" />
+    <Parameter Name="p_estado" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_descripcion" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_actualizar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_persona_id" Type="int" Mode="In" />
+    <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_prestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_prestamo_id" Type="int" Mode="In" />
+    <Parameter Name="p_fecha_prestamo" Type="date" Mode="In" />
+    <Parameter Name="p_fecha_devolucion" Type="date" Mode="In" />
+    <Parameter Name="p_detalle" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p_usuario_id" Type="int" Mode="In" />
+    <Parameter Name="p_estado" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_libros" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_actualizar_rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_rol_id" Type="int" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_actualizar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_usuario_id" Type="int" Mode="In" />
+    <Parameter Name="p_rol_id" Type="int" Mode="In" />
+    <Parameter Name="p_persona_id" Type="int" Mode="In" />
+    <Parameter Name="p_documento_identidad_id" Type="int" Mode="In" />
+    <Parameter Name="p_email" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_contrasena" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_estado" Type="bit" Mode="In" />
+    <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_consultar_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_autor_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consultar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_categoria_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consultar_documento_identidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_documento_identidad_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consultar_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_libro_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consultar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_persona_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consultar_prestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_prestamo_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consultar_rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_rol_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consultar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_usuario_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ConsultarBitacoraTransacciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_guardar_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_persona_id" Type="int" Mode="In" />
+    <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+    <Parameter Name="p_fecha_defuncion" Type="date" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_guardar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_guardar_documento_identidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_guardar_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_titulo" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_fecha_publicacion" Type="date" Mode="In" />
+    <Parameter Name="p_categoria_id" Type="int" Mode="In" />
+    <Parameter Name="p_autor_id" Type="int" Mode="In" />
+    <Parameter Name="p_unidades_disponibles" Type="int" Mode="In" />
+    <Parameter Name="p_estado" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_descripcion" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_guardar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_guardar_prestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_fecha_prestamo" Type="date" Mode="In" />
+    <Parameter Name="p_fecha_devolucion" Type="date" Mode="In" />
+    <Parameter Name="p_detalle" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p_usuario_id" Type="int" Mode="In" />
+    <Parameter Name="p_estado" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_libros" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_guardar_rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_guardar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_rol_id" Type="int" Mode="In" />
+    <Parameter Name="p_persona_id" Type="int" Mode="In" />
+    <Parameter Name="p_documento_identidad_id" Type="int" Mode="In" />
+    <Parameter Name="p_email" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_contrasena" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_estado" Type="bit" Mode="In" />
+    <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+    <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_listar_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_listar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_listar_documento_identidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_listar_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_listar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_listar_prestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_listar_prestamo_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_listar_rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_listar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Contrasena" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Proyecto_PrograVModelStoreContainer">
+    <EntitySet Name="autor" EntityType="Self.autor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BitacoraErrores" EntityType="Self.BitacoraErrores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BitacoraTransacciones" EntityType="Self.BitacoraTransacciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="documento_identidad" EntityType="Self.documento_identidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="libro" EntityType="Self.libro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="prestamo" EntityType="Self.prestamo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="prestamo_libro" EntityType="Self.prestamo_libro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="autor_persona_fk" Association="Self.autor_persona_fk">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="autor" EntitySet="autor" />
+    </AssociationSet>
+    <AssociationSet Name="libro_autor_fk" Association="Self.libro_autor_fk">
+      <End Role="autor" EntitySet="autor" />
+      <End Role="libro" EntitySet="libro" />
+    </AssociationSet>
+    <AssociationSet Name="libro_categoria_fk" Association="Self.libro_categoria_fk">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="libro" EntitySet="libro" />
+    </AssociationSet>
+    <AssociationSet Name="prestamo_libro_fk" Association="Self.prestamo_libro_fk">
+      <End Role="libro" EntitySet="libro" />
+      <End Role="prestamo_libro" EntitySet="prestamo_libro" />
+    </AssociationSet>
+    <AssociationSet Name="prestamo_libro_prestamo_fk" Association="Self.prestamo_libro_prestamo_fk">
+      <End Role="prestamo" EntitySet="prestamo" />
+      <End Role="prestamo_libro" EntitySet="prestamo_libro" />
+    </AssociationSet>
+    <AssociationSet Name="prestamo_usuario_fk" Association="Self.prestamo_usuario_fk">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="prestamo" EntitySet="prestamo" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_documento_identidad_fk" Association="Self.usuario_documento_identidad_fk">
+      <End Role="documento_identidad" EntitySet="documento_identidad" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_persona_fk" Association="Self.usuario_persona_fk">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_rol_fk" Association="Self.usuario_rol_fk">
+      <End Role="rol" EntitySet="rol" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

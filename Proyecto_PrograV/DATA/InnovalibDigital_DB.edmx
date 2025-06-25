@@ -1,0 +1,1641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Proyecto_PrograVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="autor">
+          <Key>
+            <PropertyRef Name="autor_id" />
+          </Key>
+          <Property Name="autor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="persona_id" Type="int" Nullable="false" />
+          <Property Name="fecha_defuncion" Type="date" />
+        </EntityType>
+        <EntityType Name="BitacoraErrores">
+          <Key>
+            <PropertyRef Name="idBitacora" />
+          </Key>
+          <Property Name="idBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescError" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="MomentoError" Type="datetime" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BitacoraTransacciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Accion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tabla" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="categoria_id" />
+          </Key>
+          <Property Name="categoria_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="documento_identidad">
+          <Key>
+            <PropertyRef Name="documento_identidad_id" />
+          </Key>
+          <Property Name="documento_identidad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="libro">
+          <Key>
+            <PropertyRef Name="libro_id" />
+          </Key>
+          <Property Name="libro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha_publicacion" Type="date" Nullable="false" />
+          <Property Name="categoria_id" Type="int" Nullable="false" />
+          <Property Name="autor_id" Type="int" Nullable="false" />
+          <Property Name="unidades_disponibles" Type="int" Nullable="false" />
+          <Property Name="estado" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="persona_id" />
+          </Key>
+          <Property Name="persona_id" Type="int" Nullable="false" />
+          <Property Name="identificacion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="apellido1" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="apellido2" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="prestamo">
+          <Key>
+            <PropertyRef Name="prestamo_id" />
+          </Key>
+          <Property Name="prestamo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_prestamo" Type="date" Nullable="false" />
+          <Property Name="fecha_devolucion" Type="date" Nullable="false" />
+          <Property Name="detalle" Type="nvarchar(max)" />
+          <Property Name="usuario_id" Type="int" Nullable="false" />
+          <Property Name="estado" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="prestamo_libro">
+          <Key>
+            <PropertyRef Name="prestamo_libro_id" />
+          </Key>
+          <Property Name="prestamo_libro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libro_id" Type="int" Nullable="false" />
+          <Property Name="prestamo_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="usuario_id" />
+          </Key>
+          <Property Name="usuario_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rol_id" Type="int" Nullable="false" />
+          <Property Name="persona_id" Type="int" Nullable="false" />
+          <Property Name="documento_identidad_id" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="contrasena" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="estado" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="autor_persona_fk">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="autor" Type="Self.autor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="persona_id" />
+            </Principal>
+            <Dependent Role="autor">
+              <PropertyRef Name="persona_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="libro_autor_fk">
+          <End Role="autor" Type="Self.autor" Multiplicity="1" />
+          <End Role="libro" Type="Self.libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autor">
+              <PropertyRef Name="autor_id" />
+            </Principal>
+            <Dependent Role="libro">
+              <PropertyRef Name="autor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="libro_categoria_fk">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="libro" Type="Self.libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="categoria_id" />
+            </Principal>
+            <Dependent Role="libro">
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="prestamo_libro_fk">
+          <End Role="libro" Type="Self.libro" Multiplicity="1" />
+          <End Role="prestamo_libro" Type="Self.prestamo_libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="libro">
+              <PropertyRef Name="libro_id" />
+            </Principal>
+            <Dependent Role="prestamo_libro">
+              <PropertyRef Name="libro_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="prestamo_libro_prestamo_fk">
+          <End Role="prestamo" Type="Self.prestamo" Multiplicity="1" />
+          <End Role="prestamo_libro" Type="Self.prestamo_libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prestamo">
+              <PropertyRef Name="prestamo_id" />
+            </Principal>
+            <Dependent Role="prestamo_libro">
+              <PropertyRef Name="prestamo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="prestamo_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="prestamo" Type="Self.prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="usuario_id" />
+            </Principal>
+            <Dependent Role="prestamo">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_documento_identidad_fk">
+          <End Role="documento_identidad" Type="Self.documento_identidad" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="documento_identidad">
+              <PropertyRef Name="documento_identidad_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="documento_identidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_persona_fk">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="persona_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="persona_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_rol_fk">
+          <End Role="rol" Type="Self.rol" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_obtener_id_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ObtenerTodosLosUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RegistrarBitacoraErrores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DescripcionError" Type="nvarchar" Mode="In" />
+          <Parameter Name="MomentoError" Type="datetime" Mode="In" />
+          <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_actualizar_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_autor_id" Type="int" Mode="In" />
+          <Parameter Name="p_persona_id" Type="int" Mode="In" />
+          <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+          <Parameter Name="p_fecha_defuncion" Type="date" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_actualizar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_categoria_id" Type="int" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_actualizar_documento_identidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_documento_identidad_id" Type="int" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_actualizar_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_libro_id" Type="int" Mode="In" />
+          <Parameter Name="p_titulo" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_fecha_publicacion" Type="date" Mode="In" />
+          <Parameter Name="p_categoria_id" Type="int" Mode="In" />
+          <Parameter Name="p_autor_id" Type="int" Mode="In" />
+          <Parameter Name="p_unidades_disponibles" Type="int" Mode="In" />
+          <Parameter Name="p_estado" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_descripcion" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_actualizar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_persona_id" Type="int" Mode="In" />
+          <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_actualizar_prestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_prestamo_id" Type="int" Mode="In" />
+          <Parameter Name="p_fecha_prestamo" Type="date" Mode="In" />
+          <Parameter Name="p_fecha_devolucion" Type="date" Mode="In" />
+          <Parameter Name="p_detalle" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="p_usuario_id" Type="int" Mode="In" />
+          <Parameter Name="p_estado" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_libros" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_actualizar_rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_rol_id" Type="int" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_actualizar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_usuario_id" Type="int" Mode="In" />
+          <Parameter Name="p_rol_id" Type="int" Mode="In" />
+          <Parameter Name="p_persona_id" Type="int" Mode="In" />
+          <Parameter Name="p_documento_identidad_id" Type="int" Mode="In" />
+          <Parameter Name="p_email" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_contrasena" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_estado" Type="bit" Mode="In" />
+          <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_consultar_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_autor_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consultar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_categoria_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consultar_documento_identidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_documento_identidad_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consultar_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_libro_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consultar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_persona_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consultar_prestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_prestamo_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consultar_rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_rol_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consultar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_usuario_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ConsultarBitacoraTransacciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_guardar_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_persona_id" Type="int" Mode="In" />
+          <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+          <Parameter Name="p_fecha_defuncion" Type="date" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_guardar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_guardar_documento_identidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_guardar_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_titulo" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_fecha_publicacion" Type="date" Mode="In" />
+          <Parameter Name="p_categoria_id" Type="int" Mode="In" />
+          <Parameter Name="p_autor_id" Type="int" Mode="In" />
+          <Parameter Name="p_unidades_disponibles" Type="int" Mode="In" />
+          <Parameter Name="p_estado" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_descripcion" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_guardar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_guardar_prestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_fecha_prestamo" Type="date" Mode="In" />
+          <Parameter Name="p_fecha_devolucion" Type="date" Mode="In" />
+          <Parameter Name="p_detalle" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="p_usuario_id" Type="int" Mode="In" />
+          <Parameter Name="p_estado" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_libros" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_guardar_rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_guardar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_rol_id" Type="int" Mode="In" />
+          <Parameter Name="p_persona_id" Type="int" Mode="In" />
+          <Parameter Name="p_documento_identidad_id" Type="int" Mode="In" />
+          <Parameter Name="p_email" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_contrasena" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_estado" Type="bit" Mode="In" />
+          <Parameter Name="p_identificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido1" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_apellido2" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_fecha_nacimiento" Type="date" Mode="In" />
+          <Parameter Name="p_respuesta" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_listar_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_listar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_listar_documento_identidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_listar_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_listar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_listar_prestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_listar_prestamo_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_listar_rol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_listar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contrasena" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Proyecto_PrograVModelStoreContainer">
+          <EntitySet Name="autor" EntityType="Self.autor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BitacoraErrores" EntityType="Self.BitacoraErrores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BitacoraTransacciones" EntityType="Self.BitacoraTransacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="documento_identidad" EntityType="Self.documento_identidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="libro" EntityType="Self.libro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prestamo" EntityType="Self.prestamo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prestamo_libro" EntityType="Self.prestamo_libro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="autor_persona_fk" Association="Self.autor_persona_fk">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="autor" EntitySet="autor" />
+          </AssociationSet>
+          <AssociationSet Name="libro_autor_fk" Association="Self.libro_autor_fk">
+            <End Role="autor" EntitySet="autor" />
+            <End Role="libro" EntitySet="libro" />
+          </AssociationSet>
+          <AssociationSet Name="libro_categoria_fk" Association="Self.libro_categoria_fk">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="libro" EntitySet="libro" />
+          </AssociationSet>
+          <AssociationSet Name="prestamo_libro_fk" Association="Self.prestamo_libro_fk">
+            <End Role="libro" EntitySet="libro" />
+            <End Role="prestamo_libro" EntitySet="prestamo_libro" />
+          </AssociationSet>
+          <AssociationSet Name="prestamo_libro_prestamo_fk" Association="Self.prestamo_libro_prestamo_fk">
+            <End Role="prestamo" EntitySet="prestamo" />
+            <End Role="prestamo_libro" EntitySet="prestamo_libro" />
+          </AssociationSet>
+          <AssociationSet Name="prestamo_usuario_fk" Association="Self.prestamo_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="prestamo" EntitySet="prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_documento_identidad_fk" Association="Self.usuario_documento_identidad_fk">
+            <End Role="documento_identidad" EntitySet="documento_identidad" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_persona_fk" Association="Self.usuario_persona_fk">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_rol_fk" Association="Self.usuario_rol_fk">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Proyecto_PrograVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="autor">
+          <Key>
+            <PropertyRef Name="autor_id" />
+          </Key>
+          <Property Name="autor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="persona_id" Type="Int32" Nullable="false" />
+          <Property Name="fecha_defuncion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="persona" Relationship="Self.autor_persona_fk" FromRole="autor" ToRole="persona" />
+          <NavigationProperty Name="libro" Relationship="Self.libro_autor_fk" FromRole="autor" ToRole="libro" />
+        </EntityType>
+        <EntityType Name="BitacoraErrores">
+          <Key>
+            <PropertyRef Name="idBitacora" />
+          </Key>
+          <Property Name="idBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescError" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MomentoError" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BitacoraTransacciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Accion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tabla" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="categoria_id" />
+          </Key>
+          <Property Name="categoria_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="libro" Relationship="Self.libro_categoria_fk" FromRole="categoria" ToRole="libro" />
+        </EntityType>
+        <EntityType Name="documento_identidad">
+          <Key>
+            <PropertyRef Name="documento_identidad_id" />
+          </Key>
+          <Property Name="documento_identidad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.usuario_documento_identidad_fk" FromRole="documento_identidad" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="libro">
+          <Key>
+            <PropertyRef Name="libro_id" />
+          </Key>
+          <Property Name="libro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_publicacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="categoria_id" Type="Int32" Nullable="false" />
+          <Property Name="autor_id" Type="Int32" Nullable="false" />
+          <Property Name="unidades_disponibles" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="autor" Relationship="Self.libro_autor_fk" FromRole="libro" ToRole="autor" />
+          <NavigationProperty Name="categoria" Relationship="Self.libro_categoria_fk" FromRole="libro" ToRole="categoria" />
+          <NavigationProperty Name="prestamo_libro" Relationship="Self.prestamo_libro_fk" FromRole="libro" ToRole="prestamo_libro" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="persona_id" />
+          </Key>
+          <Property Name="persona_id" Type="Int32" Nullable="false" />
+          <Property Name="identificacion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="autor" Relationship="Self.autor_persona_fk" FromRole="persona" ToRole="autor" />
+          <NavigationProperty Name="usuario" Relationship="Self.usuario_persona_fk" FromRole="persona" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="prestamo">
+          <Key>
+            <PropertyRef Name="prestamo_id" />
+          </Key>
+          <Property Name="prestamo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_prestamo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_devolucion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="usuario_id" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="prestamo_libro" Relationship="Self.prestamo_libro_prestamo_fk" FromRole="prestamo" ToRole="prestamo_libro" />
+          <NavigationProperty Name="usuario" Relationship="Self.prestamo_usuario_fk" FromRole="prestamo" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="prestamo_libro">
+          <Key>
+            <PropertyRef Name="prestamo_libro_id" />
+          </Key>
+          <Property Name="prestamo_libro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libro_id" Type="Int32" Nullable="false" />
+          <Property Name="prestamo_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="libro" Relationship="Self.prestamo_libro_fk" FromRole="prestamo_libro" ToRole="libro" />
+          <NavigationProperty Name="prestamo" Relationship="Self.prestamo_libro_prestamo_fk" FromRole="prestamo_libro" ToRole="prestamo" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.usuario_rol_fk" FromRole="rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="usuario_id" />
+          </Key>
+          <Property Name="usuario_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rol_id" Type="Int32" Nullable="false" />
+          <Property Name="persona_id" Type="Int32" Nullable="false" />
+          <Property Name="documento_identidad_id" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contrasena" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="documento_identidad" Relationship="Self.usuario_documento_identidad_fk" FromRole="usuario" ToRole="documento_identidad" />
+          <NavigationProperty Name="persona" Relationship="Self.usuario_persona_fk" FromRole="usuario" ToRole="persona" />
+          <NavigationProperty Name="prestamo" Relationship="Self.prestamo_usuario_fk" FromRole="usuario" ToRole="prestamo" />
+          <NavigationProperty Name="rol" Relationship="Self.usuario_rol_fk" FromRole="usuario" ToRole="rol" />
+        </EntityType>
+        <Association Name="autor_persona_fk">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="autor" Type="Self.autor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="persona_id" />
+            </Principal>
+            <Dependent Role="autor">
+              <PropertyRef Name="persona_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="libro_autor_fk">
+          <End Role="autor" Type="Self.autor" Multiplicity="1" />
+          <End Role="libro" Type="Self.libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autor">
+              <PropertyRef Name="autor_id" />
+            </Principal>
+            <Dependent Role="libro">
+              <PropertyRef Name="autor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="libro_categoria_fk">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="libro" Type="Self.libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="categoria_id" />
+            </Principal>
+            <Dependent Role="libro">
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_documento_identidad_fk">
+          <End Role="documento_identidad" Type="Self.documento_identidad" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="documento_identidad">
+              <PropertyRef Name="documento_identidad_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="documento_identidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="prestamo_libro_fk">
+          <End Role="libro" Type="Self.libro" Multiplicity="1" />
+          <End Role="prestamo_libro" Type="Self.prestamo_libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="libro">
+              <PropertyRef Name="libro_id" />
+            </Principal>
+            <Dependent Role="prestamo_libro">
+              <PropertyRef Name="libro_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_persona_fk">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="persona_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="persona_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="prestamo_libro_prestamo_fk">
+          <End Role="prestamo" Type="Self.prestamo" Multiplicity="1" />
+          <End Role="prestamo_libro" Type="Self.prestamo_libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prestamo">
+              <PropertyRef Name="prestamo_id" />
+            </Principal>
+            <Dependent Role="prestamo_libro">
+              <PropertyRef Name="prestamo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="prestamo_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="prestamo" Type="Self.prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="usuario_id" />
+            </Principal>
+            <Dependent Role="prestamo">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_rol_fk">
+          <End Role="rol" Type="Self.rol" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Proyecto_PrograVEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="autor" EntityType="Self.autor" />
+          <EntitySet Name="BitacoraErrores" EntityType="Self.BitacoraErrores" />
+          <EntitySet Name="BitacoraTransacciones" EntityType="Self.BitacoraTransacciones" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="documento_identidad" EntityType="Self.documento_identidad" />
+          <EntitySet Name="libro" EntityType="Self.libro" />
+          <EntitySet Name="persona" EntityType="Self.persona" />
+          <EntitySet Name="prestamo" EntityType="Self.prestamo" />
+          <EntitySet Name="prestamo_libro" EntityType="Self.prestamo_libro" />
+          <EntitySet Name="rol" EntityType="Self.rol" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="autor_persona_fk" Association="Self.autor_persona_fk">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="autor" EntitySet="autor" />
+          </AssociationSet>
+          <AssociationSet Name="libro_autor_fk" Association="Self.libro_autor_fk">
+            <End Role="autor" EntitySet="autor" />
+            <End Role="libro" EntitySet="libro" />
+          </AssociationSet>
+          <AssociationSet Name="libro_categoria_fk" Association="Self.libro_categoria_fk">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="libro" EntitySet="libro" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_documento_identidad_fk" Association="Self.usuario_documento_identidad_fk">
+            <End Role="documento_identidad" EntitySet="documento_identidad" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="prestamo_libro_fk" Association="Self.prestamo_libro_fk">
+            <End Role="libro" EntitySet="libro" />
+            <End Role="prestamo_libro" EntitySet="prestamo_libro" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_persona_fk" Association="Self.usuario_persona_fk">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="prestamo_libro_prestamo_fk" Association="Self.prestamo_libro_prestamo_fk">
+            <End Role="prestamo" EntitySet="prestamo" />
+            <End Role="prestamo_libro" EntitySet="prestamo_libro" />
+          </AssociationSet>
+          <AssociationSet Name="prestamo_usuario_fk" Association="Self.prestamo_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="prestamo" EntitySet="prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_rol_fk" Association="Self.usuario_rol_fk">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <FunctionImport Name="ObtenerTodosLosUsuarios" />
+          <FunctionImport Name="RegistrarBitacoraErrores">
+            <Parameter Name="DescripcionError" Mode="In" Type="String" />
+            <Parameter Name="MomentoError" Mode="In" Type="DateTime" />
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_autor">
+            <Parameter Name="p_autor_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_persona_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_identificacion" Mode="In" Type="String" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_apellido1" Mode="In" Type="String" />
+            <Parameter Name="p_apellido2" Mode="In" Type="String" />
+            <Parameter Name="p_fecha_nacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="p_fecha_defuncion" Mode="In" Type="DateTime" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_categoria">
+            <Parameter Name="p_categoria_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_documento_identidad">
+            <Parameter Name="p_documento_identidad_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_libro">
+            <Parameter Name="p_libro_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_titulo" Mode="In" Type="String" />
+            <Parameter Name="p_fecha_publicacion" Mode="In" Type="DateTime" />
+            <Parameter Name="p_categoria_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_autor_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_unidades_disponibles" Mode="In" Type="Int32" />
+            <Parameter Name="p_estado" Mode="In" Type="String" />
+            <Parameter Name="p_descripcion" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_persona">
+            <Parameter Name="p_persona_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_identificacion" Mode="In" Type="String" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_apellido1" Mode="In" Type="String" />
+            <Parameter Name="p_apellido2" Mode="In" Type="String" />
+            <Parameter Name="p_fecha_nacimiento" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_prestamo">
+            <Parameter Name="p_prestamo_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_fecha_prestamo" Mode="In" Type="DateTime" />
+            <Parameter Name="p_fecha_devolucion" Mode="In" Type="DateTime" />
+            <Parameter Name="p_detalle" Mode="In" Type="String" />
+            <Parameter Name="p_usuario_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_estado" Mode="In" Type="String" />
+            <Parameter Name="p_libros" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_rol">
+            <Parameter Name="p_rol_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_usuario">
+            <Parameter Name="p_usuario_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_rol_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_persona_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_documento_identidad_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_contrasena" Mode="In" Type="String" />
+            <Parameter Name="p_estado" Mode="In" Type="Boolean" />
+            <Parameter Name="p_identificacion" Mode="In" Type="String" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_apellido1" Mode="In" Type="String" />
+            <Parameter Name="p_apellido2" Mode="In" Type="String" />
+            <Parameter Name="p_fecha_nacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consultar_autor" ReturnType="Collection(Proyecto_PrograVModel.sp_consultar_autor_Result)">
+            <Parameter Name="p_autor_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consultar_categoria" ReturnType="Collection(Proyecto_PrograVModel.sp_consultar_categoria_Result)">
+            <Parameter Name="p_categoria_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consultar_documento_identidad" ReturnType="Collection(Proyecto_PrograVModel.sp_consultar_documento_identidad_Result)">
+            <Parameter Name="p_documento_identidad_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consultar_libro" ReturnType="Collection(Proyecto_PrograVModel.sp_consultar_libro_Result)">
+            <Parameter Name="p_libro_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consultar_persona" ReturnType="Collection(Proyecto_PrograVModel.sp_consultar_persona_Result)">
+            <Parameter Name="p_persona_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consultar_prestamo" ReturnType="Collection(Proyecto_PrograVModel.sp_consultar_prestamo_Result)">
+            <Parameter Name="p_prestamo_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consultar_rol" ReturnType="Collection(Proyecto_PrograVModel.sp_consultar_rol_Result)">
+            <Parameter Name="p_rol_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consultar_usuario" ReturnType="Collection(Proyecto_PrograVModel.sp_consultar_usuario_Result)">
+            <Parameter Name="p_usuario_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ConsultarBitacoraTransacciones" ReturnType="Collection(Proyecto_PrograVModel.sp_ConsultarBitacoraTransacciones_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_guardar_autor">
+            <Parameter Name="p_persona_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_identificacion" Mode="In" Type="String" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_apellido1" Mode="In" Type="String" />
+            <Parameter Name="p_apellido2" Mode="In" Type="String" />
+            <Parameter Name="p_fecha_nacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="p_fecha_defuncion" Mode="In" Type="DateTime" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_guardar_categoria">
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_guardar_documento_identidad">
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_guardar_libro">
+            <Parameter Name="p_titulo" Mode="In" Type="String" />
+            <Parameter Name="p_fecha_publicacion" Mode="In" Type="DateTime" />
+            <Parameter Name="p_categoria_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_autor_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_unidades_disponibles" Mode="In" Type="Int32" />
+            <Parameter Name="p_estado" Mode="In" Type="String" />
+            <Parameter Name="p_descripcion" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_guardar_persona">
+            <Parameter Name="p_identificacion" Mode="In" Type="String" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_apellido1" Mode="In" Type="String" />
+            <Parameter Name="p_apellido2" Mode="In" Type="String" />
+            <Parameter Name="p_fecha_nacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_guardar_prestamo">
+            <Parameter Name="p_fecha_prestamo" Mode="In" Type="DateTime" />
+            <Parameter Name="p_fecha_devolucion" Mode="In" Type="DateTime" />
+            <Parameter Name="p_detalle" Mode="In" Type="String" />
+            <Parameter Name="p_usuario_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_estado" Mode="In" Type="String" />
+            <Parameter Name="p_libros" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_guardar_rol">
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_guardar_usuario">
+            <Parameter Name="p_rol_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_persona_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_documento_identidad_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_contrasena" Mode="In" Type="String" />
+            <Parameter Name="p_estado" Mode="In" Type="Boolean" />
+            <Parameter Name="p_identificacion" Mode="In" Type="String" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_apellido1" Mode="In" Type="String" />
+            <Parameter Name="p_apellido2" Mode="In" Type="String" />
+            <Parameter Name="p_fecha_nacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="p_respuesta" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Proyecto_PrograVModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Proyecto_PrograVModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_listar_autor" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_autor_Result)" />
+          <FunctionImport Name="sp_listar_categoria" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_categoria_Result)" />
+          <FunctionImport Name="sp_listar_documento_identidad" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_documento_identidad_Result)" />
+          <FunctionImport Name="sp_listar_libro" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_libro_Result)" />
+          <FunctionImport Name="sp_listar_persona" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_persona_Result)" />
+          <FunctionImport Name="sp_listar_prestamo" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_prestamo_Result)" />
+          <FunctionImport Name="sp_listar_prestamo_libro" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_prestamo_libro_Result)" />
+          <FunctionImport Name="sp_listar_rol" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_rol_Result)" />
+          <FunctionImport Name="sp_listar_usuario" ReturnType="Collection(Proyecto_PrograVModel.sp_listar_usuario_Result)" />
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="SP_ValidarUsuario" ReturnType="Collection(Proyecto_PrograVModel.SP_ValidarUsuario_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_consultar_autor_Result">
+          <Property Type="Int32" Name="autor_id" Nullable="false" />
+          <Property Type="Int32" Name="persona_id" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_defuncion" Nullable="true" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_nacimiento" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_consultar_categoria_Result">
+          <Property Type="Int32" Name="categoria_id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_consultar_documento_identidad_Result">
+          <Property Type="Int32" Name="documento_identidad_id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_consultar_libro_Result">
+          <Property Type="Int32" Name="libro_id" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_publicacion" Nullable="false" />
+          <Property Type="Int32" Name="unidades_disponibles" Nullable="false" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="descripcion" Nullable="true" />
+          <Property Type="Int32" Name="categoria_id" Nullable="false" />
+          <Property Type="String" Name="categoria_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="persona_id" Nullable="false" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="persona_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_nacimiento" Nullable="false" />
+          <Property Type="Int32" Name="autor_id" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_defuncion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_consultar_persona_Result">
+          <Property Type="Int32" Name="persona_id" Nullable="false" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_nacimiento" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_consultar_prestamo_Result">
+          <Property Type="Int32" Name="prestamo_id" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_prestamo" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_devolucion" Nullable="false" />
+          <Property Type="String" Name="detalle" Nullable="true" />
+          <Property Type="Int32" Name="usuario_id" Nullable="false" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_consultar_rol_Result">
+          <Property Type="Int32" Name="rol_id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_consultar_usuario_Result">
+          <Property Type="Int32" Name="usuario_id" Nullable="false" />
+          <Property Type="Int32" Name="persona_id" Nullable="false" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_nacimiento" Nullable="false" />
+          <Property Type="Int32" Name="rol_id" Nullable="false" />
+          <Property Type="String" Name="rol_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="documento_identidad_id" Nullable="false" />
+          <Property Type="String" Name="documento_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="contrasena" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_ConsultarBitacoraTransacciones_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Accion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tabla" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_autor_Result">
+          <Property Type="Int32" Name="autor_id" Nullable="false" />
+          <Property Type="Int32" Name="persona_id" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_defuncion" Nullable="true" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_nacimiento" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_categoria_Result">
+          <Property Type="Int32" Name="categoria_id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_documento_identidad_Result">
+          <Property Type="Int32" Name="documento_identidad_id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_libro_Result">
+          <Property Type="Int32" Name="libro_id" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_publicacion" Nullable="false" />
+          <Property Type="Int32" Name="unidades_disponibles" Nullable="false" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="descripcion" Nullable="true" />
+          <Property Type="Int32" Name="categoria_id" Nullable="false" />
+          <Property Type="String" Name="categoria_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="persona_id" Nullable="false" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="persona_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_nacimiento" Nullable="false" />
+          <Property Type="Int32" Name="autor_id" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_defuncion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_persona_Result">
+          <Property Type="Int32" Name="persona_id" Nullable="false" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_nacimiento" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_prestamo_Result">
+          <Property Type="Int32" Name="prestamo_id" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_prestamo" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_devolucion" Nullable="false" />
+          <Property Type="String" Name="detalle" Nullable="true" />
+          <Property Type="Int32" Name="usuario_id" Nullable="false" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_prestamo_libro_Result">
+          <Property Type="Int32" Name="prestamo_libro_id" Nullable="false" />
+          <Property Type="Int32" Name="prestamo_id" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_prestamo" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_devolucion" Nullable="false" />
+          <Property Type="String" Name="estado_prestamo" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="libro_id" Nullable="false" />
+          <Property Type="String" Name="titulo_libro" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="usuario_id" Nullable="false" />
+          <Property Type="String" Name="nombre_usuario" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1_usuario" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2_usuario" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="estado_usuario" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_rol_Result">
+          <Property Type="Int32" Name="rol_id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_listar_usuario_Result">
+          <Property Type="Int32" Name="usuario_id" Nullable="false" />
+          <Property Type="Int32" Name="persona_id" Nullable="false" />
+          <Property Type="String" Name="identificacion" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="apellido2" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_nacimiento" Nullable="false" />
+          <Property Type="Int32" Name="rol_id" Nullable="false" />
+          <Property Type="String" Name="rol_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="documento_identidad_id" Nullable="false" />
+          <Property Type="String" Name="documento_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="contrasena" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="SP_ValidarUsuario_Result">
+          <Property Type="Int32" Name="usuario_id" Nullable="false" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Rol" Nullable="false" MaxLength="255" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Proyecto_PrograVModelStoreContainer" CdmEntityContainer="Proyecto_PrograVEntities1">
+          <EntitySetMapping Name="autor">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.autor">
+              <MappingFragment StoreEntitySet="autor">
+                <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BitacoraErrores">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.BitacoraErrores">
+              <MappingFragment StoreEntitySet="BitacoraErrores">
+                <ScalarProperty Name="idBitacora" ColumnName="idBitacora" />
+                <ScalarProperty Name="DescError" ColumnName="DescError" />
+                <ScalarProperty Name="MomentoError" ColumnName="MomentoError" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BitacoraTransacciones">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.BitacoraTransacciones">
+              <MappingFragment StoreEntitySet="BitacoraTransacciones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Accion" ColumnName="Accion" />
+                <ScalarProperty Name="Tabla" ColumnName="Tabla" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documento_identidad">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.documento_identidad">
+              <MappingFragment StoreEntitySet="documento_identidad">
+                <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="libro">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.libro">
+              <MappingFragment StoreEntitySet="libro">
+                <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+                <ScalarProperty Name="unidades_disponibles" ColumnName="unidades_disponibles" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="persona">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.persona">
+              <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prestamo">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.prestamo">
+              <MappingFragment StoreEntitySet="prestamo">
+                <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+                <ScalarProperty Name="fecha_prestamo" ColumnName="fecha_prestamo" />
+                <ScalarProperty Name="fecha_devolucion" ColumnName="fecha_devolucion" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prestamo_libro">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.prestamo_libro">
+              <MappingFragment StoreEntitySet="prestamo_libro">
+                <ScalarProperty Name="prestamo_libro_id" ColumnName="prestamo_libro_id" />
+                <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+                <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="Proyecto_PrograVModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerTodosLosUsuarios" FunctionName="Proyecto_PrograVModel.Store.ObtenerTodosLosUsuarios" />
+          <FunctionImportMapping FunctionImportName="RegistrarBitacoraErrores" FunctionName="Proyecto_PrograVModel.Store.RegistrarBitacoraErrores" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_autor" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_autor" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_categoria" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_categoria" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_documento_identidad" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_documento_identidad" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_libro" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_libro" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_persona" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_persona" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_prestamo" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_prestamo" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_rol" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_rol" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_usuario" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_usuario" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Proyecto_PrograVModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_consultar_autor" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_autor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_autor_Result">
+                <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consultar_categoria" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_categoria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_categoria_Result">
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consultar_documento_identidad" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_documento_identidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_documento_identidad_Result">
+                <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consultar_libro" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_libro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_libro_Result">
+                <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+                <ScalarProperty Name="unidades_disponibles" ColumnName="unidades_disponibles" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="categoria_nombre" ColumnName="categoria_nombre" />
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="persona_nombre" ColumnName="persona_nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+                <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consultar_persona" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_persona">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_persona_Result">
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consultar_prestamo" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_prestamo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_prestamo_Result">
+                <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+                <ScalarProperty Name="fecha_prestamo" ColumnName="fecha_prestamo" />
+                <ScalarProperty Name="fecha_devolucion" ColumnName="fecha_devolucion" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consultar_rol" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_rol">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_rol_Result">
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consultar_usuario" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_usuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_usuario_Result">
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="rol_nombre" ColumnName="rol_nombre" />
+                <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+                <ScalarProperty Name="documento_nombre" ColumnName="documento_nombre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ConsultarBitacoraTransacciones" FunctionName="Proyecto_PrograVModel.Store.sp_ConsultarBitacoraTransacciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_ConsultarBitacoraTransacciones_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Accion" ColumnName="Accion" />
+                <ScalarProperty Name="Tabla" ColumnName="Tabla" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Proyecto_PrograVModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Proyecto_PrograVModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_guardar_autor" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_autor" />
+          <FunctionImportMapping FunctionImportName="sp_guardar_categoria" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_categoria" />
+          <FunctionImportMapping FunctionImportName="sp_guardar_documento_identidad" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_documento_identidad" />
+          <FunctionImportMapping FunctionImportName="sp_guardar_libro" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_libro" />
+          <FunctionImportMapping FunctionImportName="sp_guardar_persona" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_persona" />
+          <FunctionImportMapping FunctionImportName="sp_guardar_prestamo" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_prestamo" />
+          <FunctionImportMapping FunctionImportName="sp_guardar_rol" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_rol" />
+          <FunctionImportMapping FunctionImportName="sp_guardar_usuario" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_usuario" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Proyecto_PrograVModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Proyecto_PrograVModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_autor" FunctionName="Proyecto_PrograVModel.Store.sp_listar_autor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_autor_Result">
+                <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_categoria" FunctionName="Proyecto_PrograVModel.Store.sp_listar_categoria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_categoria_Result">
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_documento_identidad" FunctionName="Proyecto_PrograVModel.Store.sp_listar_documento_identidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_documento_identidad_Result">
+                <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_libro" FunctionName="Proyecto_PrograVModel.Store.sp_listar_libro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_libro_Result">
+                <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+                <ScalarProperty Name="unidades_disponibles" ColumnName="unidades_disponibles" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="categoria_nombre" ColumnName="categoria_nombre" />
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="persona_nombre" ColumnName="persona_nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+                <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_persona" FunctionName="Proyecto_PrograVModel.Store.sp_listar_persona">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_persona_Result">
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_prestamo" FunctionName="Proyecto_PrograVModel.Store.sp_listar_prestamo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_prestamo_Result">
+                <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+                <ScalarProperty Name="fecha_prestamo" ColumnName="fecha_prestamo" />
+                <ScalarProperty Name="fecha_devolucion" ColumnName="fecha_devolucion" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_prestamo_libro" FunctionName="Proyecto_PrograVModel.Store.sp_listar_prestamo_libro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_prestamo_libro_Result">
+                <ScalarProperty Name="prestamo_libro_id" ColumnName="prestamo_libro_id" />
+                <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+                <ScalarProperty Name="fecha_prestamo" ColumnName="fecha_prestamo" />
+                <ScalarProperty Name="fecha_devolucion" ColumnName="fecha_devolucion" />
+                <ScalarProperty Name="estado_prestamo" ColumnName="estado_prestamo" />
+                <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+                <ScalarProperty Name="titulo_libro" ColumnName="titulo_libro" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="apellido1_usuario" ColumnName="apellido1_usuario" />
+                <ScalarProperty Name="apellido2_usuario" ColumnName="apellido2_usuario" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="estado_usuario" ColumnName="estado_usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_rol" FunctionName="Proyecto_PrograVModel.Store.sp_listar_rol">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_rol_Result">
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listar_usuario" FunctionName="Proyecto_PrograVModel.Store.sp_listar_usuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_usuario_Result">
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="rol_nombre" ColumnName="rol_nombre" />
+                <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+                <ScalarProperty Name="documento_nombre" ColumnName="documento_nombre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Proyecto_PrograVModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Proyecto_PrograVModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="SP_ValidarUsuario" FunctionName="Proyecto_PrograVModel.Store.SP_ValidarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_PrograVModel.SP_ValidarUsuario_Result">
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

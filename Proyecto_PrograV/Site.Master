@@ -1,0 +1,189 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Proyecto_PrograV.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Innovalib Digital</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Agregar fuentes y estilos específicos para el diseño de la librería -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+    <!-- <link href="~/Content/css/styles.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+            </Scripts>
+        </asp:ScriptManager>
+        <style>
+            .navbar-nav .nav-link {
+                font-size: 1.2rem; /* Aumenta el tamaño de la fuente */
+                color: black !important; /* Cambia el color de las letras a negro */
+            }
+
+            .navbar-nav .dropdown-item {
+                font-size: 1.1rem; /* Aumenta el tamaño de la fuente en los elementos del dropdown */
+                color: black !important; /* Cambia el color de las letras a negro */
+            }
+
+            .navbar-nav .nav-link:hover,
+            .navbar-nav .dropdown-item:hover {
+                color: #333 !important; /* Un tono más oscuro de negro al pasar el cursor */
+            }
+        </style>
+
+        <!-- Barra de navegación con logo y opciones en Dropdown -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #f5f5f5;">
+            <div class="container">
+                <a class="navbar-brand" runat="server" href="~/">
+                    <div style="display: flex; align-items: center;">
+                        <img src="~/Content/Imagenes/logo.png" alt="Innovalib Digital Logo" class="img-fluid" style="max-width: 40px;" runat="server" />
+                        <h3 style="margin-left: 10px; margin-bottom: 0; color: black;">Innovalib Digital</h3>
+                    </div>
+                </a>
+
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    title="Alternar navegación" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Menú de Autores -->
+                        <li id="liAutor" runat="server" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuAutor" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 Autores</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuAutor">
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Autor/ListarAutor">📚 Listar Autores</a></li>
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Autor/AgregarAutor">➕ Agregar Autor</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menú de Categorías -->
+                        <li id="liCategoria" runat="server" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuCategoria" role="button" data-bs-toggle="dropdown" aria-expanded="false">📂 Categorías</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuCategoria">
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Categoria/ListarCategoria">📑 Listar Categorías</a></li>
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Categoria/AgregarCategoria">➕ Agregar Categoría</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menú de Documentos de Identidad -->
+                        <li id="liDocumento" runat="server" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuDocumentos" role="button" data-bs-toggle="dropdown" aria-expanded="false">🆔 Documentos</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuDocumentos">
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Documento_Identidad/ListarDocumentoIdentidad">📄 Listar Documentos</a></li>
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Documento_Identidad/AgregarDocumentoIdentidad">➕ Agregar Documento</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menú de Libros -->
+                        <li id="liLibro" runat="server" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuLibros" role="button" data-bs-toggle="dropdown" aria-expanded="false">📕 Libros</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuLibros">
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Libro/ListarLibro">📖 Ver Libros</a></li>
+                                <li ><a class="dropdown-item" runat="server" href="~/PAGES/Libro/AgregarLibro">➕ Agregar Libro</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menú de Préstamos -->
+                        <li id="liPrestamo" runat="server" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuPrestamos" role="button" data-bs-toggle="dropdown" aria-expanded="false">🏦 Préstamos</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuPrestamos">
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Prestamo/ListarPrestamo">📜 Listar Préstamos</a></li>
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Prestamo/AgregarPrestamo">➕ Nuevo Préstamo</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menú de Roles -->
+                        <li id="liRol" runat="server" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuRoles" role="button" data-bs-toggle="dropdown" aria-expanded="false">🏷️ Roles</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuRoles">
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Rol/ListarRol">📌 Listar Roles</a></li>
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Rol/AgregarRol">➕ Agregar Rol</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menú de Usuarios -->
+                        <li id="liUsuario" runat="server" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuUsuarios" role="button" data-bs-toggle="dropdown" aria-expanded="false">👤 Usuarios</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuUsuarios">
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Usuario/ListarUsuario">👥 Ver Usuarios</a></li>
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Usuario/AgregarUsuario">➕ Nuevo Usuario</a></li>
+                            </ul>
+                        </li>
+                        <!-- Menú de Bitacoras -->
+                        <li id="liBitacora" runat="server" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuBitacora" role="button" data-bs-toggle="dropdown" aria-expanded="false">👤 Bitacora</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuBitacora">
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Administracion/Bitacora">👥 Ver Bitacora Transacciones</a></li>
+                                <li><a class="dropdown-item" runat="server" href="~/PAGES/Administracion/BitacoraError">👥 Ver Bitacora Errores</a></li>
+                            </ul>
+                        </li>
+                        <!-- Menú de Usuario (Cerrar Sesión) -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuUsuario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                🔒 Mi Cuenta
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuUsuario">
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="confirmarCerrarSesion()">🚪 Cerrar Sesión</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <script>
+                            function confirmarCerrarSesion() {
+                                let confirmar = confirm("¿Está seguro de que desea cerrar sesión?");
+                                if (confirmar) {
+                                    window.location.href = "/PAGES/Administracion/CerrarSesion";
+                                }
+                            }
+                        </script>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            <hr />
+            <footer class="bg-dark text-white py-3">
+                <div class="container text-center">
+                    <p>&copy; <%: DateTime.Now.Year %> - Innovalib Digital</p>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+
+    <!-- Popper.js y Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

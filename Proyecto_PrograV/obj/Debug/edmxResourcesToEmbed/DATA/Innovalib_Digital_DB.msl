@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Proyecto_PrograVModelStoreContainer" CdmEntityContainer="Proyecto_PrograVEntities2">
+    <EntitySetMapping Name="autor">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.autor">
+        <MappingFragment StoreEntitySet="autor">
+          <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraErrores">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.BitacoraErrores">
+        <MappingFragment StoreEntitySet="BitacoraErrores">
+          <ScalarProperty Name="idBitacora" ColumnName="idBitacora" />
+          <ScalarProperty Name="DescError" ColumnName="DescError" />
+          <ScalarProperty Name="MomentoError" ColumnName="MomentoError" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraTransacciones">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.BitacoraTransacciones">
+        <MappingFragment StoreEntitySet="BitacoraTransacciones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Accion" ColumnName="Accion" />
+          <ScalarProperty Name="Tabla" ColumnName="Tabla" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documento_identidad">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.documento_identidad">
+        <MappingFragment StoreEntitySet="documento_identidad">
+          <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="libro">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.libro">
+        <MappingFragment StoreEntitySet="libro">
+          <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+          <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+          <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+          <ScalarProperty Name="unidades_disponibles" ColumnName="unidades_disponibles" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persona">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prestamo">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.prestamo">
+        <MappingFragment StoreEntitySet="prestamo">
+          <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+          <ScalarProperty Name="fecha_prestamo" ColumnName="fecha_prestamo" />
+          <ScalarProperty Name="fecha_devolucion" ColumnName="fecha_devolucion" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prestamo_libro">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.prestamo_libro">
+        <MappingFragment StoreEntitySet="prestamo_libro">
+          <ScalarProperty Name="prestamo_libro_id" ColumnName="prestamo_libro_id" />
+          <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+          <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rol">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.rol">
+        <MappingFragment StoreEntitySet="rol">
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="Proyecto_PrograVModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ObtenerTodosLosUsuarios" FunctionName="Proyecto_PrograVModel.Store.ObtenerTodosLosUsuarios" />
+    <FunctionImportMapping FunctionImportName="RegistrarBitacoraErrores" FunctionName="Proyecto_PrograVModel.Store.RegistrarBitacoraErrores" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_autor" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_autor" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_categoria" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_categoria" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_documento_identidad" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_documento_identidad" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_libro" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_libro" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_persona" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_persona" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_prestamo" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_prestamo" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_rol" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_rol" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_usuario" FunctionName="Proyecto_PrograVModel.Store.sp_actualizar_usuario" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Proyecto_PrograVModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_consultar_autor" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_autor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_autor_Result">
+          <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consultar_categoria" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_categoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_categoria_Result">
+          <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consultar_documento_identidad" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_documento_identidad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_documento_identidad_Result">
+          <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consultar_libro" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_libro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_libro_Result">
+          <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+          <ScalarProperty Name="unidades_disponibles" ColumnName="unidades_disponibles" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+          <ScalarProperty Name="categoria_nombre" ColumnName="categoria_nombre" />
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="persona_nombre" ColumnName="persona_nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+          <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consultar_persona" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_persona">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_persona_Result">
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consultar_prestamo" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_prestamo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_prestamo_Result">
+          <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+          <ScalarProperty Name="fecha_prestamo" ColumnName="fecha_prestamo" />
+          <ScalarProperty Name="fecha_devolucion" ColumnName="fecha_devolucion" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consultar_rol" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_rol">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_rol_Result">
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consultar_usuario" FunctionName="Proyecto_PrograVModel.Store.sp_consultar_usuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_consultar_usuario_Result">
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="rol_nombre" ColumnName="rol_nombre" />
+          <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+          <ScalarProperty Name="documento_nombre" ColumnName="documento_nombre" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ConsultarBitacoraTransacciones" FunctionName="Proyecto_PrograVModel.Store.sp_ConsultarBitacoraTransacciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_ConsultarBitacoraTransacciones_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Accion" ColumnName="Accion" />
+          <ScalarProperty Name="Tabla" ColumnName="Tabla" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Proyecto_PrograVModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Proyecto_PrograVModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_guardar_autor" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_autor" />
+    <FunctionImportMapping FunctionImportName="sp_guardar_categoria" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_categoria" />
+    <FunctionImportMapping FunctionImportName="sp_guardar_documento_identidad" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_documento_identidad" />
+    <FunctionImportMapping FunctionImportName="sp_guardar_libro" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_libro" />
+    <FunctionImportMapping FunctionImportName="sp_guardar_persona" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_persona" />
+    <FunctionImportMapping FunctionImportName="sp_guardar_prestamo" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_prestamo" />
+    <FunctionImportMapping FunctionImportName="sp_guardar_rol" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_rol" />
+    <FunctionImportMapping FunctionImportName="sp_guardar_usuario" FunctionName="Proyecto_PrograVModel.Store.sp_guardar_usuario" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Proyecto_PrograVModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Proyecto_PrograVModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_autor" FunctionName="Proyecto_PrograVModel.Store.sp_listar_autor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_autor_Result">
+          <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_categoria" FunctionName="Proyecto_PrograVModel.Store.sp_listar_categoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_categoria_Result">
+          <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_documento_identidad" FunctionName="Proyecto_PrograVModel.Store.sp_listar_documento_identidad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_documento_identidad_Result">
+          <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_libro" FunctionName="Proyecto_PrograVModel.Store.sp_listar_libro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_libro_Result">
+          <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+          <ScalarProperty Name="unidades_disponibles" ColumnName="unidades_disponibles" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+          <ScalarProperty Name="categoria_nombre" ColumnName="categoria_nombre" />
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="persona_nombre" ColumnName="persona_nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+          <ScalarProperty Name="fecha_defuncion" ColumnName="fecha_defuncion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_persona" FunctionName="Proyecto_PrograVModel.Store.sp_listar_persona">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_persona_Result">
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_prestamo" FunctionName="Proyecto_PrograVModel.Store.sp_listar_prestamo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_prestamo_Result">
+          <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+          <ScalarProperty Name="fecha_prestamo" ColumnName="fecha_prestamo" />
+          <ScalarProperty Name="fecha_devolucion" ColumnName="fecha_devolucion" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_prestamo_libro" FunctionName="Proyecto_PrograVModel.Store.sp_listar_prestamo_libro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_prestamo_libro_Result">
+          <ScalarProperty Name="prestamo_libro_id" ColumnName="prestamo_libro_id" />
+          <ScalarProperty Name="prestamo_id" ColumnName="prestamo_id" />
+          <ScalarProperty Name="fecha_prestamo" ColumnName="fecha_prestamo" />
+          <ScalarProperty Name="fecha_devolucion" ColumnName="fecha_devolucion" />
+          <ScalarProperty Name="estado_prestamo" ColumnName="estado_prestamo" />
+          <ScalarProperty Name="libro_id" ColumnName="libro_id" />
+          <ScalarProperty Name="titulo_libro" ColumnName="titulo_libro" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="apellido1_usuario" ColumnName="apellido1_usuario" />
+          <ScalarProperty Name="apellido2_usuario" ColumnName="apellido2_usuario" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="estado_usuario" ColumnName="estado_usuario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_rol" FunctionName="Proyecto_PrograVModel.Store.sp_listar_rol">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_rol_Result">
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listar_usuario" FunctionName="Proyecto_PrograVModel.Store.sp_listar_usuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.sp_listar_usuario_Result">
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="persona_id" ColumnName="persona_id" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="rol_nombre" ColumnName="rol_nombre" />
+          <ScalarProperty Name="documento_identidad_id" ColumnName="documento_identidad_id" />
+          <ScalarProperty Name="documento_nombre" ColumnName="documento_nombre" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Proyecto_PrograVModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Proyecto_PrograVModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="SP_ValidarUsuario" FunctionName="Proyecto_PrograVModel.Store.SP_ValidarUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_PrograVModel.SP_ValidarUsuario_Result">
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

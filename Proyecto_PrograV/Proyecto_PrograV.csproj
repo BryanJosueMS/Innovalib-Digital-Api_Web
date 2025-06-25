@@ -1,0 +1,726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E578DF5-08F6-4E3E-B7E5-ECF456DAA6E4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Proyecto_PrograV</RootNamespace>
+    <AssemblyName>Proyecto_PrograV</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="DATA\InnovalibDigital_DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>InnovalibDigital_DB.edmx</DependentUpon>
+      <LastGenOutput>InnovalibDigital_DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DATA\InnovalibDigital_DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>InnovalibDigital_DB.edmx</DependentUpon>
+      <LastGenOutput>InnovalibDigital_DB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Imagenes\logo.png" />
+    <Content Include="PAGES\Administracion\Bitacora.aspx" />
+    <Content Include="PAGES\Administracion\BitacoraError.aspx" />
+    <Content Include="PAGES\Administracion\CerrarSesion.aspx" />
+    <Content Include="PAGES\Autor\AgregarAutor.aspx" />
+    <Content Include="PAGES\Autor\ListarAutor.aspx" />
+    <Content Include="PAGES\Autor\ModificarAutor.aspx" />
+    <Content Include="PAGES\Autor\ResultadoAgregarAutor.aspx" />
+    <Content Include="PAGES\Autor\ResultadoModificarAutor.aspx" />
+    <Content Include="PAGES\Categoria\AgregarCategoria.aspx" />
+    <Content Include="PAGES\Categoria\ListarCategoria.aspx" />
+    <Content Include="PAGES\Categoria\ModificarCategoria.aspx" />
+    <Content Include="PAGES\Categoria\ResultadoAgregarCategoria.aspx" />
+    <Content Include="PAGES\Categoria\ResultadoModificarCategoria.aspx" />
+    <Content Include="PAGES\Documento_Identidad\AgregarDocumentoIdentidad.aspx" />
+    <Content Include="PAGES\Documento_Identidad\ListarDocumentoIdentidad.aspx" />
+    <Content Include="PAGES\Documento_Identidad\ModificarDocumentoIdentidad.aspx" />
+    <Content Include="PAGES\Documento_Identidad\ResultadoAgregarDocumento_Identidad.aspx" />
+    <Content Include="PAGES\Documento_Identidad\ResultadoModificarDocumento_Identidad.aspx" />
+    <Content Include="PAGES\Libro\AgregarLibro.aspx" />
+    <Content Include="PAGES\Libro\ListarLibro.aspx" />
+    <Content Include="PAGES\Libro\ModificarLibro.aspx" />
+    <Content Include="PAGES\Libro\ResultadoAgregarLibro.aspx" />
+    <Content Include="PAGES\Libro\ResultadoModificarLibro.aspx" />
+    <Content Include="PAGES\Login\Login.aspx" />
+    <Content Include="PAGES\Prestamo\AgregarPrestamo.aspx" />
+    <Content Include="PAGES\Prestamo\ListarPrestamo.aspx" />
+    <Content Include="PAGES\Prestamo\ModificarPrestamo.aspx" />
+    <Content Include="PAGES\Prestamo\ResultadoAgregarPrestamo.aspx" />
+    <Content Include="PAGES\Prestamo\ResultadoModificarPrestamo.aspx" />
+    <Content Include="PAGES\Rol\AgregarRol.aspx" />
+    <Content Include="PAGES\Rol\ListarRol.aspx" />
+    <Content Include="PAGES\Rol\ModificarRol.aspx" />
+    <Content Include="PAGES\Rol\ResultadoAgregarRol.aspx" />
+    <Content Include="PAGES\Rol\ResultadoModificarRol.aspx" />
+    <Content Include="PAGES\Usuario\AgregarUsuario.aspx" />
+    <Content Include="PAGES\Usuario\ListarUsuario.aspx" />
+    <Content Include="PAGES\Usuario\ModificarUsuario.aspx" />
+    <Content Include="PAGES\Usuario\ResultadoAgregarUsuario.aspx" />
+    <Content Include="PAGES\Usuario\ResultadoModificarUsuario.aspx" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="DATA\InnovalibDigital_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>InnovalibDigital_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DATA\InnovalibDigital_DB.edmx.diagram">
+      <DependentUpon>InnovalibDigital_DB.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+    <Content Include="Site.Mobile.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="DATA\autor.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\BitacoraErrores.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\BitacoraTransacciones.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\categoria.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\documento_identidad.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\InnovalibDigital_DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InnovalibDigital_DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\InnovalibDigital_DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\InnovalibDigital_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InnovalibDigital_DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\libro.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\persona.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\prestamo.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\prestamo_libro.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\rol.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_ConsultarBitacoraTransacciones_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_consultar_autor_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_consultar_categoria_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_consultar_documento_identidad_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_consultar_libro_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_consultar_persona_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_consultar_prestamo_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_consultar_rol_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_consultar_usuario_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_helpdiagrams_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_autor_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_categoria_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_documento_identidad_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_libro_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_persona_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_prestamo_libro_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_prestamo_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_rol_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sp_listar_usuario_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\SP_ValidarUsuario_Result.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\sysdiagrams.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\usuario.cs">
+      <DependentUpon>InnovalibDigital_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Administracion\Bitacora.aspx.cs">
+      <DependentUpon>Bitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Administracion\Bitacora.aspx.designer.cs">
+      <DependentUpon>Bitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Administracion\BitacoraError.aspx.cs">
+      <DependentUpon>BitacoraError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Administracion\BitacoraError.aspx.designer.cs">
+      <DependentUpon>BitacoraError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Administracion\CerrarSesion.aspx.cs">
+      <DependentUpon>CerrarSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Administracion\CerrarSesion.aspx.designer.cs">
+      <DependentUpon>CerrarSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Autor\AgregarAutor.aspx.cs">
+      <DependentUpon>AgregarAutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Autor\AgregarAutor.aspx.designer.cs">
+      <DependentUpon>AgregarAutor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Autor\ListarAutor.aspx.cs">
+      <DependentUpon>ListarAutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Autor\ListarAutor.aspx.designer.cs">
+      <DependentUpon>ListarAutor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Autor\ModificarAutor.aspx.cs">
+      <DependentUpon>ModificarAutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Autor\ModificarAutor.aspx.designer.cs">
+      <DependentUpon>ModificarAutor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Autor\ResultadoAgregarAutor.aspx.cs">
+      <DependentUpon>ResultadoAgregarAutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Autor\ResultadoAgregarAutor.aspx.designer.cs">
+      <DependentUpon>ResultadoAgregarAutor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Autor\ResultadoModificarAutor.aspx.cs">
+      <DependentUpon>ResultadoModificarAutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Autor\ResultadoModificarAutor.aspx.designer.cs">
+      <DependentUpon>ResultadoModificarAutor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Categoria\AgregarCategoria.aspx.cs">
+      <DependentUpon>AgregarCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Categoria\AgregarCategoria.aspx.designer.cs">
+      <DependentUpon>AgregarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Categoria\ListarCategoria.aspx.cs">
+      <DependentUpon>ListarCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Categoria\ListarCategoria.aspx.designer.cs">
+      <DependentUpon>ListarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Categoria\ModificarCategoria.aspx.cs">
+      <DependentUpon>ModificarCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Categoria\ModificarCategoria.aspx.designer.cs">
+      <DependentUpon>ModificarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Categoria\ResultadoAgregarCategoria.aspx.cs">
+      <DependentUpon>ResultadoAgregarCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Categoria\ResultadoAgregarCategoria.aspx.designer.cs">
+      <DependentUpon>ResultadoAgregarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Categoria\ResultadoModificarCategoria.aspx.cs">
+      <DependentUpon>ResultadoModificarCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Categoria\ResultadoModificarCategoria.aspx.designer.cs">
+      <DependentUpon>ResultadoModificarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\AgregarDocumentoIdentidad.aspx.cs">
+      <DependentUpon>AgregarDocumentoIdentidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\AgregarDocumentoIdentidad.aspx.designer.cs">
+      <DependentUpon>AgregarDocumentoIdentidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\ListarDocumentoIdentidad.aspx.cs">
+      <DependentUpon>ListarDocumentoIdentidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\ListarDocumentoIdentidad.aspx.designer.cs">
+      <DependentUpon>ListarDocumentoIdentidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\ModificarDocumentoIdentidad.aspx.cs">
+      <DependentUpon>ModificarDocumentoIdentidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\ModificarDocumentoIdentidad.aspx.designer.cs">
+      <DependentUpon>ModificarDocumentoIdentidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\ResultadoAgregarDocumento_Identidad.aspx.cs">
+      <DependentUpon>ResultadoAgregarDocumento_Identidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\ResultadoAgregarDocumento_Identidad.aspx.designer.cs">
+      <DependentUpon>ResultadoAgregarDocumento_Identidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\ResultadoModificarDocumento_Identidad.aspx.cs">
+      <DependentUpon>ResultadoModificarDocumento_Identidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Documento_Identidad\ResultadoModificarDocumento_Identidad.aspx.designer.cs">
+      <DependentUpon>ResultadoModificarDocumento_Identidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Libro\AgregarLibro.aspx.cs">
+      <DependentUpon>AgregarLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Libro\AgregarLibro.aspx.designer.cs">
+      <DependentUpon>AgregarLibro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Libro\ListarLibro.aspx.cs">
+      <DependentUpon>ListarLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Libro\ListarLibro.aspx.designer.cs">
+      <DependentUpon>ListarLibro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Libro\ModificarLibro.aspx.cs">
+      <DependentUpon>ModificarLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Libro\ModificarLibro.aspx.designer.cs">
+      <DependentUpon>ModificarLibro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Libro\ResultadoAgregarLibro.aspx.cs">
+      <DependentUpon>ResultadoAgregarLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Libro\ResultadoAgregarLibro.aspx.designer.cs">
+      <DependentUpon>ResultadoAgregarLibro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Libro\ResultadoModificarLibro.aspx.cs">
+      <DependentUpon>ResultadoModificarLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Libro\ResultadoModificarLibro.aspx.designer.cs">
+      <DependentUpon>ResultadoModificarLibro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\AgregarPrestamo.aspx.cs">
+      <DependentUpon>AgregarPrestamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\AgregarPrestamo.aspx.designer.cs">
+      <DependentUpon>AgregarPrestamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\ListarPrestamo.aspx.cs">
+      <DependentUpon>ListarPrestamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\ListarPrestamo.aspx.designer.cs">
+      <DependentUpon>ListarPrestamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\ModificarPrestamo.aspx.cs">
+      <DependentUpon>ModificarPrestamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\ModificarPrestamo.aspx.designer.cs">
+      <DependentUpon>ModificarPrestamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\ResultadoAgregarPrestamo.aspx.cs">
+      <DependentUpon>ResultadoAgregarPrestamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\ResultadoAgregarPrestamo.aspx.designer.cs">
+      <DependentUpon>ResultadoAgregarPrestamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\ResultadoModificarPrestamo.aspx.cs">
+      <DependentUpon>ResultadoModificarPrestamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Prestamo\ResultadoModificarPrestamo.aspx.designer.cs">
+      <DependentUpon>ResultadoModificarPrestamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Rol\AgregarRol.aspx.cs">
+      <DependentUpon>AgregarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Rol\AgregarRol.aspx.designer.cs">
+      <DependentUpon>AgregarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Rol\ListarRol.aspx.cs">
+      <DependentUpon>ListarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Rol\ListarRol.aspx.designer.cs">
+      <DependentUpon>ListarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Rol\ModificarRol.aspx.cs">
+      <DependentUpon>ModificarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Rol\ModificarRol.aspx.designer.cs">
+      <DependentUpon>ModificarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Rol\ResultadoAgregarRol.aspx.cs">
+      <DependentUpon>ResultadoAgregarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Rol\ResultadoAgregarRol.aspx.designer.cs">
+      <DependentUpon>ResultadoAgregarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Rol\ResultadoModificarRol.aspx.cs">
+      <DependentUpon>ResultadoModificarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Rol\ResultadoModificarRol.aspx.designer.cs">
+      <DependentUpon>ResultadoModificarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Usuario\AgregarUsuario.aspx.cs">
+      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Usuario\AgregarUsuario.aspx.designer.cs">
+      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Usuario\ListarUsuario.aspx.cs">
+      <DependentUpon>ListarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Usuario\ListarUsuario.aspx.designer.cs">
+      <DependentUpon>ListarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Usuario\ModificarUsuario.aspx.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Usuario\ModificarUsuario.aspx.designer.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PAGES\Usuario\ResultadoAgregarUsuario.aspx.cs">
+      <DependentUpon>ResultadoAgregarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Usuario\ResultadoAgregarUsuario.aspx.designer.cs">
+      <DependentUpon>ResultadoAgregarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAGES\Usuario\ResultadoModificarUsuario.aspx.cs">
+      <DependentUpon>ResultadoModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAGES\Usuario\ResultadoModificarUsuario.aspx.designer.cs">
+      <DependentUpon>ResultadoModificarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51529</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51529/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
